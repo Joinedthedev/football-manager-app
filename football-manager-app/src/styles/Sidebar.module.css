@@ -1,0 +1,21 @@
+.sidebar {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+}
+
+.sidebarIcons {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 15px;
+}
+
