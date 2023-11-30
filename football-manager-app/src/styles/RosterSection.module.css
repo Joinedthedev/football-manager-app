@@ -1,0 +1,64 @@
+.rosterContainer {
+  padding: 35px;
+  width: 100%;
+  background-color: #222;
+}
+
+.rosterTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.rosterDetailsText {
+  font-size: 12px;
+  color: #fea013;
+  line-height: 18px;
+  font-weight: 500px;
+}
+
+.rosterMyTeam {
+  font-size: 18px;
+  color: white;
+  line-height: 18px;
+  font-weight: 600px;
+}
+
+.rosterTopRight {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+.rosterInput {
+  border-radius: 8px;
+  background-color: #222;
+  height: 14px;
+  padding: 10px;
+  padding-left: 30px;
+  
+  border: 1px solid var(--borders-default, #494949);
+  background-image: url("/src/assets/MagGlassIcon.svg");
+  background-repeat: no-repeat;
+  background-position: 5% 50%;
+  width: 100%;
+  text-align: left center;
+  color: white;
+  font-size: 14px;
+}
+
+.rosterButton {
+  background-color: var(--primary-orange);
+
+  border-radius: 8px;
+  height: 100px;
+  font-family: "Poppins";
+  border-style: none;
+  height: 35px;
+  padding: 10px;
+  text-align: center;
+  width: 60%;
+  color: white;
+  font-size: 11px;
+}
+
