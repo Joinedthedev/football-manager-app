@@ -1,3 +1,9 @@
+import React from 'react'
+
+const Icon = () => {
+  return (
+    
+
 <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
 <circle cx="15" cy="15" r="15" fill="#FEA013"/>
 <circle cx="15" cy="15" r="13" fill="#F8F8F8"/>
@@ -10,3 +16,7 @@
 </clipPath>
 </defs>
 </svg>
+  )
+}
+
+export default Icon
