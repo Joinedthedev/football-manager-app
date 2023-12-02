@@ -1,8 +1,13 @@
-.sidebar {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
+.sidebar{
+display: flex;
+flex-direction: column;
+align-items: center;
+height: 100vh;
+width: 60px;
+padding: 0px;
+margin: 0px;
+background: #111;
+
 }
 
 .icon {

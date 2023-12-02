@@ -1,5 +1,5 @@
 .rosterContainer {
-  padding: 35px;
+  padding: 20px;
   width: 100%;
   background-color: #222;
 }
@@ -8,6 +8,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-left: 10px;
+  margin-top: 20px;
 }
 
 .rosterDetailsText {
@@ -19,7 +21,7 @@
 
 .rosterMyTeam {
   font-size: 18px;
-  color: white;
+  color: var(--text-heading);
   line-height: 18px;
   font-weight: 600px;
 }
@@ -36,9 +38,9 @@
   height: 14px;
   padding: 10px;
   padding-left: 30px;
-  
+
   border: 1px solid var(--borders-default, #494949);
-  background-image: url("/src/assets/MagGlassIcon.svg");
+  background-image: url("/src/assets/svgs/MagGlassIcon.svg");
   background-repeat: no-repeat;
   background-position: 5% 50%;
   width: 100%;
@@ -49,7 +51,6 @@
 
 .rosterButton {
   background-color: var(--primary-orange);
-
   border-radius: 8px;
   height: 100px;
   font-family: "Poppins";
@@ -62,3 +63,69 @@
   font-size: 11px;
 }
 
+.rosterPlayerContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 71vh;
+  background-color: var(--neutral-background-2);
+  border-radius: 8px;
+  margin-left: 10px;
+  margin-top: 20px;
+  padding: 20px;
+}
+
+.rosterNoRosterContainer {
+  text-align: center;
+}
+.rosterNoRosterText {
+  color: var(--text-normal);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.rosterImportTeamText {
+  color: var(--primary-orange);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin: 10px;
+}
+
+.rosterPlayerStats {
+  display: flex;
+  position: absolute;
+  justify-content: space-between;
+  width: 85%;
+  color: var(--text-normal);
+  top: 20%;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+ input:focus{
+  outline: none;
+}
+.rosterEditTeamInput{
+  border: none;
+  font-family: 'Poppins';
+  font-size: 18px;
+  color: var(--text-heading);
+  line-height: 18px;
+  font-weight: 600px;
+  width: 100px;
+  background-color: var(--neutral-background-1);
+  padding: 0px;
+  margin: 0px;
+ 
+  height: 25px;
+}
+
+.rosterDisplayIcon{
+  opacity: 0;
+}
