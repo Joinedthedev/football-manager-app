@@ -1,0 +1,83 @@
+.modalStyles {
+  background-color: var(--neutral-background-2);
+  width: 800px;
+  height: 500px;
+  border-radius: 8px;
+
+  box-shadow: 0px 12px 28px 0px rgba(22, 22, 22, 0.5);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  padding: 20px;
+  z-index: 1000;
+}
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+}
+
+.modalTitle {
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  color: var(--text-heading);
+}
+
+.modalLine {
+  background-color: #494949;
+  height: 1px;
+  width: 780px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5px;
+}
+
+.modalInput {
+  display: none;
+}
+
+.modalImportButtonContainer {
+  border: 1px solid;
+  border-color: var(--borders-default);
+  width: 300px;
+  height: 44px;
+  border-radius: 8px;
+  margin: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modalImportButton{
+height: 44px;
+border: 1px solid;
+border-color: var(--borders-default);
+border-radius: 8px;
+background-color: var(--neutral-background-2);
+color: var(--text-normal);
+font-family: Poppins;
+font-size: 14px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+padding: 12px 20px 11px 20px;
+}
+
+.modalFileName {
+  color: var(--text-muted);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-align: center;
+  margin: 10px;
+}
