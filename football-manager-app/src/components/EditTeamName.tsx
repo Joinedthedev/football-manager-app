@@ -8,7 +8,9 @@ const EditTeamName = () => {
   const [teamName, setTeamName] = useState<string>("My Team");
   const [editTeamNameMode, setEditTeamNameMode] = useState<boolean>(false);
   const [isHovering, setIsHovering] = useState<boolean>(false);
-  
+  const [teamNameHasBeenEdited, setTeamNameHasBeenEdited] =
+    useState<boolean>(false);
+
   const handleMouseOver = () => {
     setIsHovering(true);
   };
@@ -25,15 +27,19 @@ const EditTeamName = () => {
     setEditTeamNameMode(true);
   };
 
-  const handleKeyDown =(e:React.KeyboardEvent<HTMLInputElement>)=>{
-    if(e.key === 'Enter'){
-      setEditTeamNameMode(false)
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      setEditTeamNameMode(false);
+      setTeamNameHasBeenEdited(true);
     }
-    
-
-  }
+  };
   return (
-    <div onClick={handleEditClick} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} className={styles.rosterDetails}>
+    <div
+      onClick={handleEditClick}
+      onMouseOver={handleMouseOver}
+      onMouseOut={handleMouseOut}
+      className={styles.rosterDetails}
+    >
       {" "}
       <p className={styles.rosterDetailsText}>Roster Details</p>
       {editTeamNameMode ? (
@@ -48,7 +54,13 @@ const EditTeamName = () => {
       ) : (
         <p className={styles.rosterMyTeam}>
           {teamName}
-          <span className={`${!isHovering && !editTeamNameMode ? styles.rosterDisplayIcon : null }`}>
+          <span
+            className={`${
+              !isHovering && !editTeamNameMode && teamNameHasBeenEdited
+                ? styles.rosterDisplayIcon
+                : null
+            }`}
+          >
             <PenIcon />
           </span>
         </p>
