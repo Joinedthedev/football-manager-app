@@ -48,28 +48,30 @@
 .modalImportButtonContainer {
   border: 1px solid;
   border-color: var(--borders-default);
-  width: 300px;
+  width: 350px;
   height: 44px;
   border-radius: 8px;
   margin: 10px;
+  margin-top: 8px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.modalImportButton{
-height: 44px;
-border: 1px solid;
-border-color: var(--borders-default);
-border-radius: 8px;
-background-color: var(--neutral-background-2);
-color: var(--text-normal);
-font-family: Poppins;
-font-size: 14px;
-font-style: normal;
-font-weight: 500;
-line-height: normal;
-padding: 12px 20px 11px 20px;
+.modalFileButton {
+  height: 44px;
+  border: 1px solid;
+  border-color: var(--borders-default);
+  border-radius: 8px;
+  background-color: var(--neutral-background-2);
+  color: var(--text-normal);
+  font-family: Poppins;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  padding: 12px 20px 11px 20px;
+  text-align: center;
 }
 
 .modalFileName {
@@ -80,4 +82,33 @@ padding: 12px 20px 11px 20px;
   line-height: normal;
   text-align: center;
   margin: 10px;
+}
+
+.modalErrorText {
+  color: var(--text-muted);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin: 10px;
+}
+.modalRosterText {
+  color: var(--text-heading);
+  font-family: Poppins;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin-left: 10px;
+}
+
+.modalImportRosterContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 18px;
+}
+
+.modalImportRosterError {
+  border: 1px solid var(--primary-red);
 }
