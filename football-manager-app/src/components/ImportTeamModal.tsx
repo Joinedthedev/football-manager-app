@@ -47,6 +47,7 @@ const ImportTeamModal = ({ open, onClose }: ImportTeamModalProps) => {
   const [error, setError] = useState<string>(defaultFormatMessage); //error can either be null or a string and its initial state is null
   const [isError, setIsError] = useState<boolean>(false);
   const [fileName, setFileName] = useState<string>(noFileMessage);
+  const [isFile, setIsFile] = useState<File | null>(null);
 
   const hiddenFileInput = useRef<HTMLInputElement | null>(null);
   const handleClick = () => {
@@ -65,6 +66,7 @@ const ImportTeamModal = ({ open, onClose }: ImportTeamModalProps) => {
     if (!file.name.endsWith(".csv")) {
       setError(wrongFormatMessage);
       setIsError(true);
+      setIsFile(null)
       return;
     }
 
@@ -90,6 +92,7 @@ const ImportTeamModal = ({ open, onClose }: ImportTeamModalProps) => {
 
         setError(defaultFormatMessage);
         setIsError(false);
+        setIsFile(file)
         setImportedData(parsedData);
       },
     });
@@ -106,7 +109,7 @@ const ImportTeamModal = ({ open, onClose }: ImportTeamModalProps) => {
             <div className={styles.modalImportRosterContainer}>
               <p className={styles.modalRosterText}>Roster File</p>
               <div
-                className={`${styles.modalImportButtonContainer} ${
+                className={`${styles.modalFileButtonContainer} ${
                   isError ? styles.modalImportRosterError : null
                 }`}
               >
@@ -129,6 +132,11 @@ const ImportTeamModal = ({ open, onClose }: ImportTeamModalProps) => {
               onChange={handleFile}
               ref={hiddenFileInput}
             />
+
+            <div className={styles.modalImportRosterButtonContainer}>
+              {isFile && !isError ? <button className={styles.modalImportRosterButtonActive}>Import</button>:
+              <button onClick={} className={styles.modalImportRosterButtonInactive}>Import</button>}
+            </div>
           </div>
         </div>
       )}
