@@ -63,6 +63,21 @@
   font-size: 11px;
 }
 
+.rosterButtonReImport {
+  background-color: var(--neutral-background-1);
+  border-radius: 8px;
+  height: 100px;
+  font-family: "Poppins";
+  border-style: none;
+  height: 35px;
+  padding: 10px;
+  text-align: center;
+  width: 60%;
+  color: var(--text-normal);
+  font-size: 11px;
+  border: 1px solid var(--borders-default)
+}
+
 .rosterPlayerContainer {
   display: flex;
   justify-content: center;
