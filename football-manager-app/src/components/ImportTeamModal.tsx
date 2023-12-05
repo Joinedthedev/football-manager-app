@@ -43,14 +43,15 @@ const ImportTeamModal = ({ open, onClose }: ImportTeamModalProps) => {
   const emptyValuesMessage: string =
     "Your sheet is missing data. Please ensure all cells are filled out.";
 
-  //states for managing file importation
+  
 
-  const [error, setError] = useState<string>(defaultFormatMessage); //error can either be null or a string and its initial state is null
+  const [error, setError] = useState<string>(defaultFormatMessage); 
   const [isError, setIsError] = useState<boolean>(false);
   const [fileName, setFileName] = useState<string>(noFileMessage);
   const [isFile, setIsFile] = useState<File | null>(null);
 
   const { players, setPlayers } = usePlayerContext();
+  const {isRosterImported, setIsRosterImported} = usePlayerContext();
 
   const hiddenFileInput = useRef<HTMLInputElement | null>(null);
   const handleClick = () => {
@@ -117,8 +118,10 @@ const ImportTeamModal = ({ open, onClose }: ImportTeamModalProps) => {
   };
 
   const handleImport = () => {
-    const playerNames = players.map((player) => player.name);
-    console.log("Player Names:", playerNames);
+    
+    setIsRosterImported(true);
+    onClose();
+  
   };
   return ReactDom.createPortal(
     <>
@@ -153,6 +156,7 @@ const ImportTeamModal = ({ open, onClose }: ImportTeamModalProps) => {
               type="file"
               onChange={handleFile}
               ref={hiddenFileInput}
+              
             />
 
             <div className={styles.modalImportRosterButtonContainer}>
