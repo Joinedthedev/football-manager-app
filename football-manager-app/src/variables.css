@@ -4,8 +4,9 @@
   --borders-default: #494949;
   --neutral-background-1: #222;
   --neutral-background-2: #2d2d2d;
-  --text-normal: #cbcbcb;
+  --text-normal: #cbcbcb; 
   --text-heading: #f8f8f8;
   --text-muted: #999;
   --primary-red: #d23131;
+  --text-disabled: #707070;
 }
