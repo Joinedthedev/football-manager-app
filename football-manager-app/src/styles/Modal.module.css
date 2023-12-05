@@ -45,7 +45,7 @@
   display: none;
 }
 
-.modalImportButtonContainer {
+.modalFileButtonContainer {
   border: 1px solid;
   border-color: var(--borders-default);
   width: 350px;
@@ -72,6 +72,7 @@
   line-height: normal;
   padding: 12px 20px 11px 20px;
   text-align: center;
+
 }
 
 .modalFileName {
@@ -111,4 +112,37 @@
 
 .modalImportRosterError {
   border: 1px solid var(--primary-red);
+}
+
+.modalImportRosterButtonActive {
+  padding: 12px 20px 11px 20px;
+  background-color: var(--primary-orange);
+  color: var(--text-heading);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  border-radius: 8px;
+  border-style: none;
+ 
+}
+
+
+.modalImportRosterButtonInactive {
+  padding: 12px 20px 11px 20px;
+  background-color: var(--neutral-background-2);
+  color: var(--text-disabled);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  border-radius: 8px;
+  border-style: none;
+  cursor:not-allowed;
+}
+
+.modalImportRosterButtonContainer{
+  position: relative;
+  top:54%;
+  left: 90%;
 }
