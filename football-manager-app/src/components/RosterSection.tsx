@@ -42,7 +42,8 @@ const RosterSection = () => {
         </div>
       </div>
       <div className={styles.rosterPlayerContainer}>
-        {/* {players.length > 0 ? (
+        <PlayerStatLabels/>
+        {players.length > 0 ? (
           <>
             <PlayerRoster />
           </>
@@ -64,8 +65,8 @@ const RosterSection = () => {
             </div>
           </>
 
-        )} */}
-      <PlayerRoster/>
+        )}
+      
       </div>
       {importTeamModalIsOpen && (
         <ImportTeamModal
