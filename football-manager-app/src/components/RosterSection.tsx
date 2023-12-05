@@ -11,6 +11,9 @@ import { usePlayerContext } from "./PlayerContext";
 /** The roster component for this app. ALL STYLES CAN BE FOUND IN src/styles/RosterSection.module.css */
 const RosterSection = () => {
   const { players } = usePlayerContext();
+  const {isRosterImported} = usePlayerContext();
+
+
   const [importTeamModalIsOpen, setImportTeamModalIsOpen] =
     useState<boolean>(false);
 
@@ -32,18 +35,28 @@ const RosterSection = () => {
             className={styles.rosterInput}
             type="text"
           />
-          <button
-            onClick={handleOpenImportTeamModal}
-            className={styles.rosterButton}
-          >
-            {" "}
-            Import Team
-          </button>
+          {players.length > 0 && isRosterImported? (
+            <button
+              onClick={handleOpenImportTeamModal}
+              className={styles.rosterButtonReImport}
+            >
+              {" "}
+             Re-Import Team
+            </button>
+          ) : (
+            <button
+              onClick={handleOpenImportTeamModal}
+              className={styles.rosterButton}
+            >
+              {" "}
+              Import Team
+            </button>
+          )}
         </div>
       </div>
       <div className={styles.rosterPlayerContainer}>
-        <PlayerStatLabels/>
-        {players.length > 0 ? (
+        <PlayerStatLabels />
+        {players.length > 0 && isRosterImported? (
           <>
             <PlayerRoster />
           </>
@@ -66,7 +79,7 @@ const RosterSection = () => {
           </>
 
         )}
-      
+        {/* <PlayerRoster /> */}
       </div>
       {importTeamModalIsOpen && (
         <ImportTeamModal
