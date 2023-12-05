@@ -4,9 +4,10 @@ import ReactDom from "react-dom";
 import ModalHeader from "./ModalHeader";
 import ModalLine from "../assets/component-assets/ModalLine";
 import Papa from "papaparse";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import Button from "./SecondaryButton";
 import SecondaryButton from "./SecondaryButton";
+import { usePlayerContext } from "./PlayerContext";
 
 type ImportTeamModalProps = {
   open: boolean;
@@ -43,11 +44,13 @@ const ImportTeamModal = ({ open, onClose }: ImportTeamModalProps) => {
     "Your sheet is missing data. Please ensure all cells are filled out.";
 
   //states for managing file importation
-  const [importedData, setImportedData] = useState<Player[]>([]);
+
   const [error, setError] = useState<string>(defaultFormatMessage); //error can either be null or a string and its initial state is null
   const [isError, setIsError] = useState<boolean>(false);
   const [fileName, setFileName] = useState<string>(noFileMessage);
   const [isFile, setIsFile] = useState<File | null>(null);
+
+  const { players, setPlayers } = usePlayerContext();
 
   const hiddenFileInput = useRef<HTMLInputElement | null>(null);
   const handleClick = () => {
@@ -66,7 +69,7 @@ const ImportTeamModal = ({ open, onClose }: ImportTeamModalProps) => {
     if (!file.name.endsWith(".csv")) {
       setError(wrongFormatMessage);
       setIsError(true);
-      setIsFile(null)
+      setIsFile(null);
       return;
     }
 
@@ -75,7 +78,23 @@ const ImportTeamModal = ({ open, onClose }: ImportTeamModalProps) => {
       dynamicTyping: true,
       complete: function (result) {
         console.log(result.errors); // Log parsing errors
-        const parsedData = result.data as Player[];
+        const parsedData: Player[] = result.data.map((csvPlayer) => ({
+          name: csvPlayer["Player Name"],
+          image: csvPlayer["Player Image"],
+          jerseyNumber: parseInt(csvPlayer["Jersey Number"], 10),
+          position: csvPlayer["Position"],
+          height: csvPlayer["Height"],
+          weight: csvPlayer["Weight"],
+          nationality: csvPlayer["Nationality"],
+          flagImage: csvPlayer["Flag Image"],
+          starter: csvPlayer["Starter"],
+          appearances: parseInt(csvPlayer["Appearances"], 10),
+          minutesPlayed: parseInt(csvPlayer["Minutes Played"], 10),
+          goals: parseInt(csvPlayer["Goals"], 10),
+          assists: parseInt(csvPlayer["Assists"], 10),
+          cleanSheets: parseInt(csvPlayer["Clean Sheets"], 10),
+          saves: parseInt(csvPlayer["Saves"], 10),
+        }));
 
         const hasEmptyValues = parsedData.some((player) =>
           Object.values(player).some(
@@ -86,18 +105,21 @@ const ImportTeamModal = ({ open, onClose }: ImportTeamModalProps) => {
         if (hasEmptyValues) {
           setError(emptyValuesMessage);
           setIsError(true);
-          setImportedData([]);
           return;
         }
 
         setError(defaultFormatMessage);
         setIsError(false);
-        setIsFile(file)
-        setImportedData(parsedData);
+        setIsFile(file);
+        setPlayers(parsedData);
       },
     });
   };
 
+  const handleImport = () => {
+    const playerNames = players.map((player) => player.name);
+    console.log("Player Names:", playerNames);
+  };
   return ReactDom.createPortal(
     <>
       {open && (
@@ -134,8 +156,18 @@ const ImportTeamModal = ({ open, onClose }: ImportTeamModalProps) => {
             />
 
             <div className={styles.modalImportRosterButtonContainer}>
-              {isFile && !isError ? <button className={styles.modalImportRosterButtonActive}>Import</button>:
-              <button onClick={} className={styles.modalImportRosterButtonInactive}>Import</button>}
+              {isFile && !isError ? (
+                <button
+                  onClick={handleImport}
+                  className={styles.modalImportRosterButtonActive}
+                >
+                  Import
+                </button>
+              ) : (
+                <button className={styles.modalImportRosterButtonInactive}>
+                  Import
+                </button>
+              )}
             </div>
           </div>
         </div>
