@@ -15,13 +15,30 @@ type ImportTeamModalProps = {
 
 type Player = {
   name: string;
+  image: string;
+  jerseyNumber: number;
+  position: string;
+  height: number;
+  weight: number;
+  nationality: string;
+  flagImage: string;
+  starter: string;
+  appearances: number;
+  minutesPlayed: number;
   goals: number;
+  assists: number;
+  cleanSheets: number;
+  saves: number;
 };
 
 const ImportTeamModal = ({ open, onClose }: ImportTeamModalProps) => {
+  const noFileMessage: string = "No file Selected";
+
   const defaultFormatMessage: string = "File must be in .csv format";
+
   const wrongFormatMessage: string =
     "Wrong file format. Please try again with a .csv file.";
+
   const emptyValuesMessage: string =
     "Your sheet is missing data. Please ensure all cells are filled out.";
 
@@ -29,7 +46,7 @@ const ImportTeamModal = ({ open, onClose }: ImportTeamModalProps) => {
   const [importedData, setImportedData] = useState<Player[]>([]);
   const [error, setError] = useState<string>(defaultFormatMessage); //error can either be null or a string and its initial state is null
   const [isError, setIsError] = useState<boolean>(false);
-  const [fileName, setFileName] = useState<string>("");
+  const [fileName, setFileName] = useState<string>(noFileMessage);
 
   const hiddenFileInput = useRef<HTMLInputElement | null>(null);
   const handleClick = () => {
@@ -39,15 +56,9 @@ const ImportTeamModal = ({ open, onClose }: ImportTeamModalProps) => {
   const handleFile = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
 
-    setFileName(file.name);
+    setFileName(file?.name || noFileMessage);
 
     if (!file) {
-      return;
-    }
-
-    if (file.name.endsWith(".csv")) {
-      setError(defaultFormatMessage);
-      setIsError(false);
       return;
     }
 
@@ -57,31 +68,31 @@ const ImportTeamModal = ({ open, onClose }: ImportTeamModalProps) => {
       return;
     }
 
-   
+    Papa.parse(file, {
+      header: true,
+      dynamicTyping: true,
+      complete: function (result) {
+        console.log(result.errors); // Log parsing errors
+        const parsedData = result.data as Player[];
 
-    if (file) {
-      Papa.parse(file, {
-        header: true,
-        dynamicTyping: true,
-        complete: function (result) {
-          const parsedData = result.data as Player[];
+        const hasEmptyValues = parsedData.some((player) =>
+          Object.values(player).some(
+            (value) => value === null || value === undefined || value === ""
+          )
+        );
 
-          const hasEmptyValues = parsedData.some((player) =>
-            Object.values(player).some(
-              (value) => value === null || value === undefined || value === ""
-            )
-          );
+        if (hasEmptyValues) {
+          setError(emptyValuesMessage);
+          setIsError(true);
+          setImportedData([]);
+          return;
+        }
 
-          if (hasEmptyValues) {
-            setError(emptyValuesMessage);
-            setIsError(true)
-            return;
-          }
-
-          setImportedData(parsedData);
-        },
-      });
-    }
+        setError(defaultFormatMessage);
+        setIsError(false);
+        setImportedData(parsedData);
+      },
+    });
   };
 
   return ReactDom.createPortal(
