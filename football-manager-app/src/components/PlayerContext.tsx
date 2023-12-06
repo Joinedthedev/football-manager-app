@@ -30,6 +30,8 @@ type PlayerContextType = {
   setPlayers: Dispatch<SetStateAction<Player[]>>;
   isRosterImported: boolean;
   setIsRosterImported: Dispatch<SetStateAction<boolean>>;
+  isEditPlayerModalIsOpen1: boolean;
+  setIsEditPlayerModalIsOpen1: Dispatch<SetStateAction<boolean>>;
   addPlayer: (player: Player) => void;
   editPlayer: (index: number, updatedPlayer: Player) => void;
   deletePlayer: (index: number) => void;
@@ -46,6 +48,9 @@ export const PlayerContextProvider: React.FC<PlayerContextProviderProps> = ({
 }) => {
   const [players, setPlayers] = useState<Player[]>([]);
   const [isRosterImported, setIsRosterImported] = useState<boolean>(false);
+  const [isEditPlayerModalIsOpen1, setIsEditPlayerModalIsOpen1] =
+    useState<boolean>(false);
+
   const addPlayer = (player: Player) => {
     setPlayers((prevPlayers) => [...prevPlayers, player]);
   };
@@ -68,7 +73,17 @@ export const PlayerContextProvider: React.FC<PlayerContextProviderProps> = ({
 
   return (
     <PlayerContext.Provider
-      value={{ players, setPlayers, isRosterImported, setIsRosterImported, addPlayer, editPlayer, deletePlayer }}
+      value={{
+        players,
+        setPlayers,
+        isRosterImported,
+        setIsRosterImported,
+        isEditPlayerModalIsOpen1,
+        setIsEditPlayerModalIsOpen1,
+        addPlayer,
+        editPlayer,
+        deletePlayer,
+      }}
     >
       {children}
     </PlayerContext.Provider>
