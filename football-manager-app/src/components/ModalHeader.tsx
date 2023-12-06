@@ -10,7 +10,7 @@ const ModalHeader = ({ title, onClose }: ModalTitleProps) => {
   return (
     <div style={{ display: "flex", justifyContent: "space-between", padding: "7px" }}>
       <p className={styles.modalTitle}>{title}</p>
-      <div onClick={onClose}>
+      <div style={{cursor:"pointer"}}onClick={onClose}>
         <CloseIcon />
       </div>
     </div>
