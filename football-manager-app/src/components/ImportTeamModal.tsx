@@ -73,6 +73,9 @@ const ImportTeamModal = ({ open, onClose }: ImportTeamModalProps) => {
       setIsFile(null);
       return;
     }
+    if (file){
+      setPlayers([])
+    }
 
     Papa.parse(file, {
       header: true,
