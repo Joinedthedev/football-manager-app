@@ -1,8 +1,14 @@
+.playerEditOrDelete div{
+    width: 0px;
+    margin: 12px;
+  }
+  
+
 .playerDetailsStyles {
     display: flex;
    justify-content: center;
     align-items: center;
-    margin: 5px;
+    margin: 7px;
     width: 90vw;
     
   }
@@ -33,7 +39,5 @@
    
     text-align: left;
   }
-  
-  .playerWidth{
-    width: 50px;
-  }
+
+

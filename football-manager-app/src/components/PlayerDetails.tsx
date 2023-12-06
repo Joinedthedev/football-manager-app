@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "@/styles/PlayerDetails.module.css";
 import { text } from "stream/consumers";
+import { PlayerContextProvider, usePlayerContext } from "./PlayerContext";
 
 type PlayerDetailsProps = {
   player: {
@@ -15,9 +16,16 @@ type PlayerDetailsProps = {
     minutesPlayed: number;
     flagImage: string;
   };
+
 };
 
 const PlayerDetails = ({ player }: PlayerDetailsProps) => {
+  const { isEditPlayerModalIsOpen1, setIsEditPlayerModalIsOpen1 } =
+    usePlayerContext();
+    
+    const handleClick = ()=>{
+      setIsEditPlayerModalIsOpen1(true)
+    }
   return (
     <>
       <div className={styles.playerDetailsStyles}>
@@ -45,13 +53,15 @@ const PlayerDetails = ({ player }: PlayerDetailsProps) => {
         <div style={{ textAlign: "center" }}>{player.appearances}</div>
 
         <div style={{ textAlign: "center" }}>{player.minutesPlayed} </div>
+
         <div
-        
+          onClick={handleClick}
           style={{
             width: "0px",
-            margin: "12px",
+            margin: "7px",
             fontSize: "16px",
             fontWeight: "900",
+            cursor: "pointer",
           }}
         >
           ...
