@@ -1,0 +1,26 @@
+.formationContainer {
+  padding: 20px;
+  width: 100%;
+  background-color: #222;
+}
+
+.formationTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 10px;
+  margin-top: 20px;
+}
+
+.formationFieldContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 71vh;
+  background-color: var(--neutral-background-2);
+  border-radius: 8px;
+  margin-left: 10px;
+  margin-top: 20px;
+  padding: 20px;
+}

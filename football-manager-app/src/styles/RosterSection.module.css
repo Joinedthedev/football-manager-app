@@ -4,6 +4,8 @@
   background-color: #222;
 }
 
+
+
 .rosterTop {
   display: flex;
   justify-content: space-between;
@@ -11,6 +13,8 @@
   margin-left: 10px;
   margin-top: 20px;
 }
+
+
 
 .rosterDetailsText {
   font-size: 12px;
@@ -91,6 +95,8 @@
   margin-top: 20px;
   padding: 20px;
 }
+
+
 
 .rosterNoRosterContainer {
   text-align: center;
