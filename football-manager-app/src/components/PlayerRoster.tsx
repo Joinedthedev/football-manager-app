@@ -6,15 +6,12 @@ const PlayerRoster = () => {
   const { players, deletePlayer, editPlayer } = usePlayerContext();
   return (
     <div className={styles.playerRosterContainer}>
-
-<div className={styles.playerDirectContainer}>
-  
+      <div className={styles.playerDirectContainer}>
         {players.map((player) => (
           <PlayerDetails key={player.jerseyNumber} player={player} />
         ))}
-  
       </div>
-</div>
+    </div>
   );
 };
 
