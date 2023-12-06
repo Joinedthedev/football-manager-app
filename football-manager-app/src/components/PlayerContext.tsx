@@ -32,6 +32,8 @@ type PlayerContextType = {
   setIsRosterImported: Dispatch<SetStateAction<boolean>>;
   isEditPlayerModalIsOpen1: boolean;
   setIsEditPlayerModalIsOpen1: Dispatch<SetStateAction<boolean>>;
+  search: string;
+  setSearch: Dispatch<SetStateAction<string>>;
   addPlayer: (player: Player) => void;
   editPlayer: (index: number, updatedPlayer: Player) => void;
   deletePlayer: (index: number) => void;
@@ -50,6 +52,7 @@ export const PlayerContextProvider: React.FC<PlayerContextProviderProps> = ({
   const [isRosterImported, setIsRosterImported] = useState<boolean>(false);
   const [isEditPlayerModalIsOpen1, setIsEditPlayerModalIsOpen1] =
     useState<boolean>(false);
+  const [search, setSearch] = useState<string>("");
 
   const addPlayer = (player: Player) => {
     setPlayers((prevPlayers) => [...prevPlayers, player]);
@@ -80,6 +83,8 @@ export const PlayerContextProvider: React.FC<PlayerContextProviderProps> = ({
         setIsRosterImported,
         isEditPlayerModalIsOpen1,
         setIsEditPlayerModalIsOpen1,
+        search,
+        setSearch,
         addPlayer,
         editPlayer,
         deletePlayer,

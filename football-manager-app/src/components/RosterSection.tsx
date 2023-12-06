@@ -14,6 +14,7 @@ const RosterSection = () => {
   const { players } = usePlayerContext();
   const {isRosterImported, setIsRosterImported} = usePlayerContext();
   const {isEditPlayerModalIsOpen1, setIsEditPlayerModalIsOpen1} = usePlayerContext();
+  const {search,setSearch} = usePlayerContext();
 
 
   const [importTeamModalIsOpen, setImportTeamModalIsOpen] =
@@ -34,6 +35,11 @@ const RosterSection = () => {
   const handleCloseEditPlayerModal =()=>{
     setIsEditPlayerModalIsOpen1(false)
   }
+  const handleChange = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key=='Enter'){
+    setSearch(e.currentTarget.value);
+    }
+  };
 
   return (
     <div className={styles.rosterContainer}>
@@ -44,6 +50,9 @@ const RosterSection = () => {
             placeholder={" Find Player"}
             className={styles.rosterInput}
             type="text"
+         
+            onKeyDown={handleChange}
+         
           />
           {players.length > 0 && isRosterImported? (
             <button
