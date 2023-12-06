@@ -45,7 +45,7 @@
   display: none;
 }
 
-.modalFileButtonContainer {
+.modalImportRosterFileButtonContainer {
   border: 1px solid;
   border-color: var(--borders-default);
   width: 350px;
@@ -58,7 +58,7 @@
   align-items: center;
 }
 
-.modalFileButton {
+.modalImportRosterFileButton {
   height: 44px;
   border: 1px solid;
   border-color: var(--borders-default);
@@ -72,10 +72,9 @@
   line-height: normal;
   padding: 12px 20px 11px 20px;
   text-align: center;
-
 }
 
-.modalFileName {
+.modalImportRosterFileName {
   color: var(--text-muted);
   font-size: 14px;
   font-style: normal;
@@ -85,7 +84,7 @@
   margin: 10px;
 }
 
-.modalErrorText {
+.modalImportRosterErrorText {
   color: var(--text-muted);
   font-size: 14px;
   font-style: normal;
@@ -93,7 +92,7 @@
   line-height: normal;
   margin: 10px;
 }
-.modalRosterText {
+.modalImportRosterText {
   color: var(--text-heading);
   font-family: Poppins;
   font-size: 14px;
@@ -114,6 +113,43 @@
   border: 1px solid var(--primary-red);
 }
 
+.modalImportRosterFileSummaryText {
+  color: var(--text-heading);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin-left: 15px;
+  margin-bottom: 10px;
+}
+
+.modalImportRosterFileSummaryContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.modalImportRosterStatColumn {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+.modalImportRosterStatTitle {
+  color: var(--text-normal);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin: 5px;
+}
+
+.modalImportRosterStatText {
+  color: var(--text-normal);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  margin: 10px;
+}
 .modalImportRosterButtonActive {
   padding: 12px 20px 11px 20px;
   background-color: var(--primary-orange);
@@ -124,9 +160,7 @@
   line-height: normal;
   border-radius: 8px;
   border-style: none;
- 
 }
-
 
 .modalImportRosterButtonInactive {
   padding: 12px 20px 11px 20px;
@@ -138,11 +172,28 @@
   line-height: normal;
   border-radius: 8px;
   border-style: none;
-  cursor:not-allowed;
+  cursor: not-allowed;
 }
 
-.modalImportRosterButtonContainer{
-  position: relative;
-  top:54%;
-  left: 90%;
+.modalImportRosterButtonContainer {
+  position: absolute;
+  top: 90%;
+  left: 88%;
+}
+
+.editPlayerModalContainer {
+  display: flex;
+  align-items: center;
+
+  color: var(--text-normal);
+  font-family: Poppins;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+
+  padding: 10px;
+}
+.editPlayerModalContainer p {
+  text-align: center;
 }
