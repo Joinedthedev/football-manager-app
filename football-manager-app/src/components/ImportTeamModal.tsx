@@ -3,6 +3,7 @@ import styles from "@/styles/Modal.module.css";
 import ReactDom from "react-dom";
 import ModalHeader from "./ModalHeader";
 import ModalLine from "../assets/component-assets/ModalLine";
+
 import Papa from "papaparse";
 import { useState, useRef, useEffect } from "react";
 import Button from "./SecondaryButton";
@@ -43,15 +44,13 @@ const ImportTeamModal = ({ open, onClose }: ImportTeamModalProps) => {
   const emptyValuesMessage: string =
     "Your sheet is missing data. Please ensure all cells are filled out.";
 
-  
-
-  const [error, setError] = useState<string>(defaultFormatMessage); 
+  const [error, setError] = useState<string>(defaultFormatMessage);
   const [isError, setIsError] = useState<boolean>(false);
   const [fileName, setFileName] = useState<string>(noFileMessage);
   const [isFile, setIsFile] = useState<File | null>(null);
 
   const { players, setPlayers } = usePlayerContext();
-  const {isRosterImported, setIsRosterImported} = usePlayerContext();
+  const { isRosterImported, setIsRosterImported } = usePlayerContext();
 
   const hiddenFileInput = useRef<HTMLInputElement | null>(null);
   const handleClick = () => {
@@ -73,8 +72,8 @@ const ImportTeamModal = ({ open, onClose }: ImportTeamModalProps) => {
       setIsFile(null);
       return;
     }
-    if (file){
-      setPlayers([])
+    if (file) {
+      setPlayers([]);
     }
 
     Papa.parse(file, {
@@ -121,11 +120,42 @@ const ImportTeamModal = ({ open, onClose }: ImportTeamModalProps) => {
   };
 
   const handleImport = () => {
-    
     setIsRosterImported(true);
     onClose();
-  
   };
+
+  const getTotalPlayers = (players: Player[]): number => {
+    return players.length;
+  };
+
+  const getGoalkeepers = (players: Player[]): Player[] => {
+    return players.filter((player) => player.position === "Goalkeeper");
+  };
+
+  const getMidfielders = (players: Player[]): Player[] => {
+    return players.filter((player) => player.position === "Midfielder");
+  };
+
+  const getDefenders = (players: Player[]): Player[] => {
+    return players.filter((player) => player.position === "Defender");
+  };
+
+  const getFowards = (players: Player[]): Player[] => {
+    return players.filter((player) => player.position === "Fowards");
+  };
+
+  console.log(players);
+  console.log(getMidfielders);
+  const totalPlayers = getTotalPlayers(players);
+  const totalGoalKeepers = getGoalkeepers(players).length;
+  const totalMidfielders = getMidfielders(players).length;
+  const totalDefenders = getDefenders(players).length;
+  const totalFowards = getFowards(players).length;
+
+  {
+    console.log("isFile:", isFile);
+  }
+  console.log("isError:", isError);
   return ReactDom.createPortal(
     <>
       {open && (
@@ -135,16 +165,16 @@ const ImportTeamModal = ({ open, onClose }: ImportTeamModalProps) => {
             <ModalLine />
 
             <div className={styles.modalImportRosterContainer}>
-              <p className={styles.modalRosterText}>Roster File</p>
+              <p className={styles.modalImportRosterText}>Roster File</p>
               <div
-                className={`${styles.modalFileButtonContainer} ${
+                className={`${styles.modalImportRosterFileButtonContainer} ${
                   isError ? styles.modalImportRosterError : null
                 }`}
               >
-                <p className={styles.modalFileName}>{fileName}</p>
+                <p className={styles.modalImportRosterFileName}>{fileName}</p>
                 <div onClick={handleClick}>
                   <button
-                    className={`${styles.modalFileButton} ${
+                    className={`${styles.modalImportRosterFileButton} ${
                       isError ? styles.modalImportRosterError : null
                     }`}
                   >
@@ -152,15 +182,66 @@ const ImportTeamModal = ({ open, onClose }: ImportTeamModalProps) => {
                   </button>
                 </div>
               </div>
-              <p className={styles.modalErrorText}>{error}</p>
+              <p className={styles.modalImportRosterErrorText}>{error}</p>
             </div>
             <input
               className={styles.modalInput}
               type="file"
               onChange={handleFile}
               ref={hiddenFileInput}
-              
             />
+
+            {isFile ? (
+              <div style={{ marginTop: "20px" }}>
+                <p className={styles.modalImportRosterFileSummaryText}>
+                  {" "}
+                  File Summary
+                </p>
+
+                <div className={styles.modalImportRosterFileSummaryContainer}>
+                  <div className={styles.modalImportRosterStatColumn}>
+                    <p className={styles.modalImportRosterStatTitle}>
+                      Total Players
+                    </p>
+                    <p className={styles.modalImportRosterStatText}>
+                      {totalPlayers}
+                    </p>
+                  </div>
+                  <div className={styles.modalImportRosterStatColumn}>
+                    <p className={styles.modalImportRosterStatTitle}>
+                      Goalkeepers
+                    </p>
+                    <p className={styles.modalImportRosterStatText}>
+                      {totalGoalKeepers}
+                    </p>
+                  </div>
+                  <div className={styles.modalImportRosterStatColumn}>
+                    <p className={styles.modalImportRosterStatTitle}>
+                      Midfielders
+                    </p>
+                    <p className={styles.modalImportRosterStatText}>
+                      {totalMidfielders}
+                    </p>
+                  </div>
+                  <div className={styles.modalImportRosterStatColumn}>
+                    <p className={styles.modalImportRosterStatTitle}>
+                      Defenders
+                    </p>
+                    <p className={styles.modalImportRosterStatText}>
+                      {totalDefenders}
+                    </p>
+                  </div>
+                  <div className={styles.modalImportRosterStatColumn}>
+                    <p className={styles.modalImportRosterStatTitle}>Fowards</p>
+                    <p className={styles.modalImportRosterStatText}>
+                      {totalFowards}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              ""
+            )}
 
             <div className={styles.modalImportRosterButtonContainer}>
               {isFile && !isError ? (
