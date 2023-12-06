@@ -7,23 +7,33 @@ import ImportTeamModal from "./ImportTeamModal";
 import { useState } from "react";
 import PlayerRoster from "./PlayerRoster";
 import { usePlayerContext } from "./PlayerContext";
+import EditPlayerModal from "./EditPlayerModal";
 
 /** The roster component for this app. ALL STYLES CAN BE FOUND IN src/styles/RosterSection.module.css */
 const RosterSection = () => {
   const { players } = usePlayerContext();
-  const {isRosterImported} = usePlayerContext();
+  const {isRosterImported, setIsRosterImported} = usePlayerContext();
+  const {isEditPlayerModalIsOpen1, setIsEditPlayerModalIsOpen1} = usePlayerContext();
 
 
   const [importTeamModalIsOpen, setImportTeamModalIsOpen] =
     useState<boolean>(false);
+   
 
   const handleOpenImportTeamModal = () => {
     setImportTeamModalIsOpen(true);
+   
   };
 
   const handleCloseImportTeamModal = () => {
     setImportTeamModalIsOpen(false);
+    
   };
+
+
+  const handleCloseEditPlayerModal =()=>{
+    setIsEditPlayerModalIsOpen1(false)
+  }
 
   return (
     <div className={styles.rosterContainer}>
@@ -79,7 +89,7 @@ const RosterSection = () => {
           </>
 
         )}
-        {/* <PlayerRoster /> */}
+       
       </div>
       {importTeamModalIsOpen && (
         <ImportTeamModal
@@ -87,6 +97,7 @@ const RosterSection = () => {
           onClose={handleCloseImportTeamModal}
         />
       )}
+     <EditPlayerModal open={isEditPlayerModalIsOpen1} onClose={handleCloseEditPlayerModal}/>
     </div>
   );
 };
