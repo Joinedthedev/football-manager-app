@@ -1,15 +1,13 @@
 import React from "react";
-import Modal from "react-bootstrap/Modal";
-import { useState } from "react";
 import styles from "@/styles/RosterSection.module.css";
 import PenIcon from "../assets/component-assets/PenIcon";
+import { usePlayerContext } from "./PlayerContext";
 
 const EditTeamName = () => {
-  const [teamName, setTeamName] = useState<string>("My Team");
-  const [editTeamNameMode, setEditTeamNameMode] = useState<boolean>(false);
-  const [isHovering, setIsHovering] = useState<boolean>(false);
-  const [teamNameHasBeenEdited, setTeamNameHasBeenEdited] =
-    useState<boolean>(false);
+  const {teamName, setTeamName} = usePlayerContext();
+  const {editTeamNameMode, setEditTeamNameMode} = usePlayerContext();
+  const {isHovering, setIsHovering} = usePlayerContext();
+  const {teamNameHasBeenEdited, setTeamNameHasBeenEdited} = usePlayerContext();
 
   const handleMouseOver = () => {
     setIsHovering(true);
