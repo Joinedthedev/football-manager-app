@@ -58,6 +58,7 @@ const ImportTeamModal = ({ open, onClose }: ImportTeamModalProps) => {
   };
 
   const handleFile = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setPlayers([])
     const file = e.target.files?.[0];
 
     setFileName(file?.name || noFileMessage);
