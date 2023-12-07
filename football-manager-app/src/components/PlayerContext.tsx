@@ -32,6 +32,16 @@ type PlayerContextType = {
   setIsRosterImported: Dispatch<SetStateAction<boolean>>;
   isEditPlayerModalIsOpen1: boolean;
   setIsEditPlayerModalIsOpen1: Dispatch<SetStateAction<boolean>>;
+  teamName: string;
+  setTeamName: Dispatch<SetStateAction<string>>;
+  editTeamNameMode: boolean;
+  setEditTeamNameMode: Dispatch<SetStateAction<boolean>>;
+  isHovering: boolean;
+  setIsHovering: Dispatch<SetStateAction<boolean>>;
+  teamNameHasBeenEdited: boolean;
+  setTeamNameHasBeenEdited: Dispatch<SetStateAction<boolean>>;
+  isFile: File | null;
+  setIsFile: Dispatch<SetStateAction<File | null>>;
   search: string;
   setSearch: Dispatch<SetStateAction<string>>;
   addPlayer: (player: Player) => void;
@@ -53,6 +63,12 @@ export const PlayerContextProvider: React.FC<PlayerContextProviderProps> = ({
   const [isEditPlayerModalIsOpen1, setIsEditPlayerModalIsOpen1] =
     useState<boolean>(false);
   const [search, setSearch] = useState<string>("");
+  const [teamName, setTeamName] = useState<string>("My Team");
+  const [editTeamNameMode, setEditTeamNameMode] = useState<boolean>(false);
+  const [isHovering, setIsHovering] = useState<boolean>(false);
+  const [teamNameHasBeenEdited, setTeamNameHasBeenEdited] =
+    useState<boolean>(false);
+  const [isFile, setIsFile] = useState<File | null>(null);
 
   const addPlayer = (player: Player) => {
     setPlayers((prevPlayers) => [...prevPlayers, player]);
@@ -88,6 +104,16 @@ export const PlayerContextProvider: React.FC<PlayerContextProviderProps> = ({
         addPlayer,
         editPlayer,
         deletePlayer,
+        teamName,
+        setTeamName,
+        editTeamNameMode,
+        setEditTeamNameMode,
+        teamNameHasBeenEdited,
+        setTeamNameHasBeenEdited,
+        isHovering,
+        setIsHovering,
+        isFile,
+        setIsFile,
       }}
     >
       {children}

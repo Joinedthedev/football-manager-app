@@ -1,6 +1,6 @@
-import React from "react";
+
 import ModalHeader from "./ModalHeader";
-import ModalLine from "../assets/component-assets/ModalLine";
+
 import styles from "@/styles/Modal.module.css";
 import ReactDom from "react-dom";
 import PenIcon from "../assets/component-assets/PenIcon";

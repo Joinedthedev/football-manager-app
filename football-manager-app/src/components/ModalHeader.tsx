@@ -1,4 +1,4 @@
-import React from "react";
+
 import styles from "@/styles/Modal.module.css";
 import CloseIcon from "../assets/component-assets/CloseIcon";
 type ModalTitleProps = {

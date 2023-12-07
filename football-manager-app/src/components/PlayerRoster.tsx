@@ -1,10 +1,9 @@
-import React from "react";
 import { usePlayerContext } from "./PlayerContext";
 import styles from "@/styles/PlayerRoster.module.css";
 import PlayerDetails from "./PlayerDetails";
 const PlayerRoster = () => {
-  const { players, deletePlayer, editPlayer } = usePlayerContext();
-  const { search, setSearch } = usePlayerContext();
+  const { players } = usePlayerContext();
+  const { search } = usePlayerContext();
   return (
     <div className={styles.playerRosterContainer}>
       <div className={styles.playerDirectContainer}>

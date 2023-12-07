@@ -6,8 +6,7 @@ import ModalLine from "../assets/component-assets/ModalLine";
 
 import Papa from "papaparse";
 import { useState, useRef, useEffect } from "react";
-import Button from "./SecondaryButton";
-import SecondaryButton from "./SecondaryButton";
+
 import { usePlayerContext } from "./PlayerContext";
 
 type ImportTeamModalProps = {
@@ -47,18 +46,18 @@ const ImportTeamModal = ({ open, onClose }: ImportTeamModalProps) => {
   const [error, setError] = useState<string>(defaultFormatMessage);
   const [isError, setIsError] = useState<boolean>(false);
   const [fileName, setFileName] = useState<string>(noFileMessage);
-  const [isFile, setIsFile] = useState<File | null>(null);
 
   const { players, setPlayers } = usePlayerContext();
-  const { isRosterImported, setIsRosterImported } = usePlayerContext();
-
+  const { setIsRosterImported } = usePlayerContext();
+  const { isFile, setIsFile } = usePlayerContext();
   const hiddenFileInput = useRef<HTMLInputElement | null>(null);
   const handleClick = () => {
-    hiddenFileInput.current.click();
+    
+    hiddenFileInput.current?.click();
   };
 
   const handleFile = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setPlayers([])
+    setPlayers([]);
     const file = e.target.files?.[0];
 
     setFileName(file?.name || noFileMessage);
@@ -82,7 +81,7 @@ const ImportTeamModal = ({ open, onClose }: ImportTeamModalProps) => {
       dynamicTyping: true,
       complete: function (result) {
         console.log(result.errors); // Log parsing errors
-        const parsedData: Player[] = result.data.map((csvPlayer) => ({
+        const parsedData: Player[] = result.data.map((csvPlayer:any) => ({
           name: csvPlayer["Player Name"],
           image: csvPlayer["Player Image"],
           jerseyNumber: parseInt(csvPlayer["Jersey Number"], 10),

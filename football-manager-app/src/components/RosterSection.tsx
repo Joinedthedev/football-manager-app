@@ -1,6 +1,5 @@
-import react from "react";
+
 import styles from "@/styles/RosterSection.module.css";
-import PenIcon from "@/assets/svgs/PenIcon.svg";
 import PlayerStatLabels from "./PlayerStatLabels";
 import EditTeamName from "./EditTeamName";
 import ImportTeamModal from "./ImportTeamModal";
@@ -12,9 +11,9 @@ import EditPlayerModal from "./EditPlayerModal";
 /** The roster component for this app. ALL STYLES CAN BE FOUND IN src/styles/RosterSection.module.css */
 const RosterSection = () => {
   const { players } = usePlayerContext();
-  const {isRosterImported, setIsRosterImported} = usePlayerContext();
+  const {isRosterImported} = usePlayerContext();
   const {isEditPlayerModalIsOpen1, setIsEditPlayerModalIsOpen1} = usePlayerContext();
-  const {search,setSearch} = usePlayerContext();
+  const {setSearch} = usePlayerContext();
 
 
   const [importTeamModalIsOpen, setImportTeamModalIsOpen] =

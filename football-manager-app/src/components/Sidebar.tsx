@@ -1,12 +1,12 @@
 import { useState } from "react";
 import FootIcon from "../assets/component-assets/FootIcon";
-import { Stack } from "react-bootstrap";
 import styles from "@/styles/Sidebar.module.css";
 // import "./variables.css";
 import HamburgerIsClickedIcon from "../assets/component-assets/HamburgerIsClickedIcon";
 import HamburgerIsNotClicked from "../assets/component-assets/HamburgerIsNotClicked";
 import PersonIconIsClicked from "../assets/component-assets/PersonIconIsClicked";
 import PersonIconIsNotClicked from "../assets/component-assets/PersonIconIsNotClicked";
+import { Link } from "react-router-dom";
 
 const Sidebar = () => {
   /** State variables that handle our icon states */
@@ -47,22 +47,27 @@ const Sidebar = () => {
        *
        */}
       <div className={styles.sidebarIcons}>
-        <div onClick={handleHamClick}>
-          {hamburgerIsClicked && !personIsClicked ? (
-            <HamburgerIsClickedIcon />
-          ) : (
-            <HamburgerIsNotClicked />
-          )}
-        </div>
+        <Link to="/">
+          
+            <div onClick={handleHamClick}>
+              {hamburgerIsClicked && !personIsClicked ? (
+                <HamburgerIsClickedIcon />
+              ) : (
+                <HamburgerIsNotClicked />
+              )}
+            </div>
+        </Link>
+        
 
-        <div onClick={handlePersonClick}>
-          {personIsClicked && !hamburgerIsClicked ? (
-            <PersonIconIsClicked />
-          ) : (
-            <PersonIconIsNotClicked />
-          )}
-       
-        </div>
+        <Link to="/formationoverview">
+          <div onClick={handlePersonClick}>
+            {personIsClicked && !hamburgerIsClicked ? (
+              <PersonIconIsClicked />
+            ) : (
+              <PersonIconIsNotClicked />
+            )}
+          </div>
+        </Link>
       </div>
     </div>
   );

@@ -1,7 +1,7 @@
-import React from "react";
+
 import styles from "@/styles/PlayerDetails.module.css";
-import { text } from "stream/consumers";
-import { PlayerContextProvider, usePlayerContext } from "./PlayerContext";
+
+import { usePlayerContext } from "./PlayerContext";
 
 type PlayerDetailsProps = {
   player: {
@@ -20,7 +20,7 @@ type PlayerDetailsProps = {
 };
 
 const PlayerDetails = ({ player }: PlayerDetailsProps) => {
-  const { isEditPlayerModalIsOpen1, setIsEditPlayerModalIsOpen1 } =
+  const { setIsEditPlayerModalIsOpen1 } =
     usePlayerContext();
     
     const handleClick = ()=>{
