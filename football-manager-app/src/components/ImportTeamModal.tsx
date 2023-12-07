@@ -5,7 +5,7 @@ import ModalHeader from "./ModalHeader";
 import ModalLine from "../assets/component-assets/ModalLine";
 
 import Papa from "papaparse";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 
 import { usePlayerContext } from "./PlayerContext";
 
