@@ -23,6 +23,7 @@ type Player = {
   assists: number;
   cleanSheets: number;
   saves: number;
+  Id: string;
 };
 
 type PlayerContextType = {
@@ -30,8 +31,11 @@ type PlayerContextType = {
   setPlayers: Dispatch<SetStateAction<Player[]>>;
   isRosterImported: boolean;
   setIsRosterImported: Dispatch<SetStateAction<boolean>>;
-  isEditPlayerModalIsOpen1: boolean;
-  setIsEditPlayerModalIsOpen1: Dispatch<SetStateAction<boolean>>;
+  isEditPlayerModalIsOpen: boolean;
+  setIsEditPlayerModalIsOpen: Dispatch<SetStateAction<boolean>>;
+
+  isDeletePlayerModalIsOpen: boolean;
+  setIsDeletePlayerModalIsOpen: Dispatch<SetStateAction<boolean>>;
   teamName: string;
   setTeamName: Dispatch<SetStateAction<string>>;
   editTeamNameMode: boolean;
@@ -46,7 +50,10 @@ type PlayerContextType = {
   setSearch: Dispatch<SetStateAction<string>>;
   addPlayer: (player: Player) => void;
   editPlayer: (index: number, updatedPlayer: Player) => void;
-  deletePlayer: (index: number) => void;
+  deletePlayer: (playerId: string) =>void;
+  playerToEditOrDelete: string;
+  setPlayerToEditOrDelete: React.Dispatch<React.SetStateAction<string>>;
+
 };
 
 const PlayerContext = createContext<PlayerContextType | undefined>(undefined);
@@ -60,7 +67,9 @@ export const PlayerContextProvider: React.FC<PlayerContextProviderProps> = ({
 }) => {
   const [players, setPlayers] = useState<Player[]>([]);
   const [isRosterImported, setIsRosterImported] = useState<boolean>(false);
-  const [isEditPlayerModalIsOpen1, setIsEditPlayerModalIsOpen1] =
+  const [isEditPlayerModalIsOpen, setIsEditPlayerModalIsOpen] =
+    useState<boolean>(false);
+  const [isDeletePlayerModalIsOpen, setIsDeletePlayerModalIsOpen] =
     useState<boolean>(false);
   const [search, setSearch] = useState<string>("");
   const [teamName, setTeamName] = useState<string>("My Team");
@@ -69,6 +78,7 @@ export const PlayerContextProvider: React.FC<PlayerContextProviderProps> = ({
   const [teamNameHasBeenEdited, setTeamNameHasBeenEdited] =
     useState<boolean>(false);
   const [isFile, setIsFile] = useState<File | null>(null);
+  const [playerToEditOrDelete, setPlayerToEditOrDelete] = useState<string>("");
 
   const addPlayer = (player: Player) => {
     setPlayers((prevPlayers) => [...prevPlayers, player]);
@@ -82,12 +92,8 @@ export const PlayerContextProvider: React.FC<PlayerContextProviderProps> = ({
     });
   };
 
-  const deletePlayer = (index: number) => {
-    setPlayers((prevPlayers) => {
-      const newPlayers = [...prevPlayers];
-      newPlayers.splice(index, 1);
-      return newPlayers;
-    });
+  const deletePlayer = (playerId: string) => {
+    setPlayers((prevPlayers) => prevPlayers.filter((player) => player.Id !== playerId));
   };
 
   return (
@@ -97,8 +103,10 @@ export const PlayerContextProvider: React.FC<PlayerContextProviderProps> = ({
         setPlayers,
         isRosterImported,
         setIsRosterImported,
-        isEditPlayerModalIsOpen1,
-        setIsEditPlayerModalIsOpen1,
+        isEditPlayerModalIsOpen,
+        setIsEditPlayerModalIsOpen,
+        isDeletePlayerModalIsOpen,
+        setIsDeletePlayerModalIsOpen,
         search,
         setSearch,
         addPlayer,
@@ -114,6 +122,8 @@ export const PlayerContextProvider: React.FC<PlayerContextProviderProps> = ({
         setIsHovering,
         isFile,
         setIsFile,
+        playerToEditOrDelete,
+        setPlayerToEditOrDelete,
       }}
     >
       {children}

@@ -3,7 +3,7 @@ import styles from "@/styles/Modal.module.css";
 import ReactDom from "react-dom";
 import ModalHeader from "./ModalHeader";
 import ModalLine from "../assets/component-assets/ModalLine";
-
+import { v4 as uuidv4 } from 'uuid';
 import Papa from "papaparse";
 import { useState, useRef } from "react";
 
@@ -30,6 +30,7 @@ type Player = {
   assists: number;
   cleanSheets: number;
   saves: number;
+   Id: string;
 };
 
 const ImportTeamModal = ({ open, onClose }: ImportTeamModalProps) => {
@@ -82,6 +83,7 @@ const ImportTeamModal = ({ open, onClose }: ImportTeamModalProps) => {
       complete: function (result) {
         console.log(result.errors); // Log parsing errors
         const parsedData: Player[] = result.data.map((csvPlayer:any) => ({
+          
           name: csvPlayer["Player Name"],
           image: csvPlayer["Player Image"],
           jerseyNumber: parseInt(csvPlayer["Jersey Number"], 10),
@@ -97,6 +99,7 @@ const ImportTeamModal = ({ open, onClose }: ImportTeamModalProps) => {
           assists: parseInt(csvPlayer["Assists"], 10),
           cleanSheets: parseInt(csvPlayer["Clean Sheets"], 10),
           saves: parseInt(csvPlayer["Saves"], 10),
+          Id: uuidv4(),
         }));
 
         const hasEmptyValues = parsedData.some((player) =>
@@ -122,6 +125,7 @@ const ImportTeamModal = ({ open, onClose }: ImportTeamModalProps) => {
   const handleImport = () => {
     setIsRosterImported(true);
     onClose();
+    setIsFile(null)
   };
 
   const getTotalPlayers = (players: Player[]): number => {
@@ -240,7 +244,7 @@ const ImportTeamModal = ({ open, onClose }: ImportTeamModalProps) => {
                 </div>
               </div>
             ) : (
-              ""
+              null
             )}
 
             <div className={styles.modalImportRosterButtonContainer}>

@@ -1,4 +1,3 @@
-
 import styles from "@/styles/PlayerDetails.module.css";
 
 import { usePlayerContext } from "./PlayerContext";
@@ -6,26 +5,39 @@ import { usePlayerContext } from "./PlayerContext";
 type PlayerDetailsProps = {
   player: {
     name: string;
+    image: string;
     jerseyNumber: number;
-    starter: string;
+    position: string;
     height: number;
     weight: number;
     nationality: string;
-    position: string;
+    flagImage: string;
+    starter: string;
     appearances: number;
     minutesPlayed: number;
-    flagImage: string;
+    goals: number;
+    assists: number;
+    cleanSheets: number;
+    saves: number;
+    Id: string;
+
   };
 
+ 
 };
 
 const PlayerDetails = ({ player }: PlayerDetailsProps) => {
-  const { setIsEditPlayerModalIsOpen1 } =
-    usePlayerContext();
-    
-    const handleClick = ()=>{
-      setIsEditPlayerModalIsOpen1(true)
-    }
+  const { setIsEditPlayerModalIsOpen } = usePlayerContext();
+  const { setPlayerToEditOrDelete} = usePlayerContext();
+
+  
+
+  const handleClick = () => {
+    setIsEditPlayerModalIsOpen(true);
+   setPlayerToEditOrDelete(player.Id)
+   console.log(player.Id)
+  };
+
   return (
     <>
       <div className={styles.playerDetailsStyles}>
@@ -44,7 +56,7 @@ const PlayerDetails = ({ player }: PlayerDetailsProps) => {
           {player.starter}
         </div>
         <div>{player.position}</div>
-        <div style={{ width: "150px" }}>
+        <div style={{ width: "130px" }}>
           {(player.height / 100).toFixed(2)}m
         </div>
         <div style={{ width: "150px" }}>{player.weight}kg</div>
@@ -55,13 +67,17 @@ const PlayerDetails = ({ player }: PlayerDetailsProps) => {
         <div style={{ textAlign: "center" }}>{player.minutesPlayed} </div>
 
         <div
+        
           onClick={handleClick}
           style={{
             width: "0px",
-            margin: "7px",
+            margin: "5px",
             fontSize: "16px",
             fontWeight: "900",
             cursor: "pointer",
+            textAlign: "left",
+            marginBottom: "12px",
+            marginRight: "12px",
           }}
         >
           ...

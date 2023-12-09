@@ -4,6 +4,9 @@ import PlayerDetails from "./PlayerDetails";
 const PlayerRoster = () => {
   const { players } = usePlayerContext();
   const { search } = usePlayerContext();
+ const {deletePlayer} = usePlayerContext();
+  
+
   return (
     <div className={styles.playerRosterContainer}>
       <div className={styles.playerDirectContainer}>
@@ -18,8 +21,8 @@ const PlayerRoster = () => {
 
             return isNameMatch || isPositionMatch;
           })
-          .map((player, index) => (
-            <PlayerDetails key={index} player={player} />
+          .map((player) => (
+            <PlayerDetails key={player.Id} player={player} />
           ))}
       </div>
     </div>

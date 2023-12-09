@@ -6,14 +6,17 @@ import { useState } from "react";
 import PlayerRoster from "./PlayerRoster";
 import { usePlayerContext } from "./PlayerContext";
 import EditPlayerModal from "./EditPlayerModal";
+import DeletePlayerModal from "./DeletePlayerModal";
 
 /** The roster component for this app. ALL STYLES CAN BE FOUND IN src/styles/RosterSection.module.css */
 const RosterSection = () => {
   const { players } = usePlayerContext();
-  const { isRosterImported } = usePlayerContext();
-  const { isEditPlayerModalIsOpen1, setIsEditPlayerModalIsOpen1 } =
+  const { isRosterImported, setIsRosterImported } = usePlayerContext();
+  const { isEditPlayerModalIsOpen, setIsEditPlayerModalIsOpen } =
     usePlayerContext();
+
   const { setSearch } = usePlayerContext();
+
 
   const [importTeamModalIsOpen, setImportTeamModalIsOpen] =
     useState<boolean>(false);
@@ -22,6 +25,8 @@ const RosterSection = () => {
 
   const handleOpenImportTeamModal = () => {
     setImportTeamModalIsOpen(true);
+    
+    
   };
 
   const handleCloseImportTeamModal = () => {
@@ -29,7 +34,7 @@ const RosterSection = () => {
   };
 
   const handleCloseEditPlayerModal = () => {
-    setIsEditPlayerModalIsOpen1(false);
+    setIsEditPlayerModalIsOpen(false);
   };
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key == "Enter") {
@@ -120,10 +125,13 @@ const RosterSection = () => {
         />
       )}
       <EditPlayerModal
-        open={isEditPlayerModalIsOpen1}
+        open={isEditPlayerModalIsOpen}
         onClose={handleCloseEditPlayerModal}
+   
       />
+     
     </div>
+
   );
 };
 
