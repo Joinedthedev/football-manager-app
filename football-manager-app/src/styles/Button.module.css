@@ -5,7 +5,7 @@
   border-radius: 8px;
   background-color: var(--neutral-background-2);
   color: var(--text-normal);
-  font-family: Poppins;
+  font-family: "Poppins";
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
@@ -16,11 +16,27 @@
 .buttonPrimaryStyles {
   padding: 12px 20px 11px 20px;
   color: var(--text-headings);
-  font-family: Poppins;
+  font-family: "Poppins";
   font-size: 10px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
   background-color: var(--primary-orange);
   height: 44px;
+  border-radius: 8px;
+}
+
+.buttonWarningStyles {
+  height: 44px;
+  border: none;
+  border-radius: 8px;
+  background-color: var(--primary-red);
+  color: var(--text-normal);
+  font-family: "Poppins";
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  padding: 12px 20px 11px 20px;
+  color: var(--text-heading);
 }
