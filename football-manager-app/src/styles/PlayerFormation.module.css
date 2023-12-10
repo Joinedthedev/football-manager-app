@@ -132,3 +132,8 @@
   font-weight: 500;
   line-height: normal;
 }
+
+.selected{
+    background-color: var(--primary-orange);
+   
+}
