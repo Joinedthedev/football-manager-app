@@ -6,12 +6,12 @@ import { useState } from "react";
 import PlayerRoster from "./PlayerRoster";
 import { usePlayerContext } from "./PlayerContext";
 import EditPlayerModal from "./EditPlayerModal";
-import DeletePlayerModal from "./DeletePlayerModal";
+
 
 /** The roster component for this app. ALL STYLES CAN BE FOUND IN src/styles/RosterSection.module.css */
 const RosterSection = () => {
   const { players } = usePlayerContext();
-  const { isRosterImported, setIsRosterImported } = usePlayerContext();
+  const { isRosterImported, } = usePlayerContext();
   const { isEditPlayerModalIsOpen, setIsEditPlayerModalIsOpen } =
     usePlayerContext();
 

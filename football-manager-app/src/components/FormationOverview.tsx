@@ -22,7 +22,7 @@ const FormationOverview = () => {
             <PlayerCard />
           </>
         ) : (
-          <FormationOverviewModal title="No player data found" text="Please importer your roster first." />
+          <FormationOverviewModal title="No player data found" text="Please import your roster first." />
         )}
       </div>
     </div>

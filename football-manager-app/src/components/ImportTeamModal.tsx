@@ -125,7 +125,6 @@ const ImportTeamModal = ({ open, onClose }: ImportTeamModalProps) => {
   const handleImport = () => {
     setIsRosterImported(true);
     onClose();
-    setIsFile(null)
   };
 
   const getTotalPlayers = (players: Player[]): number => {

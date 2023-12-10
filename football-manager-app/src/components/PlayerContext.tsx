@@ -33,6 +33,8 @@ type PlayerContextType = {
   setIsRosterImported: Dispatch<SetStateAction<boolean>>;
   isEditPlayerModalIsOpen: boolean;
   setIsEditPlayerModalIsOpen: Dispatch<SetStateAction<boolean>>;
+  isEditPlayerDetailsModalOpen: boolean;
+  setIsEditPlayerDetailsModalOpen: Dispatch<SetStateAction<boolean>>;
 
   isDeletePlayerModalIsOpen: boolean;
   setIsDeletePlayerModalIsOpen: Dispatch<SetStateAction<boolean>>;
@@ -48,8 +50,7 @@ type PlayerContextType = {
   setIsFile: Dispatch<SetStateAction<File | null>>;
   search: string;
   setSearch: Dispatch<SetStateAction<string>>;
-  addPlayer: (player: Player) => void;
-  editPlayer: (index: number, updatedPlayer: Player) => void;
+  editPlayer: (playerId: string, updatedPlayer: Player) => void;
   deletePlayer: (playerId: string) =>void;
   playerToEditOrDelete: string;
   setPlayerToEditOrDelete: React.Dispatch<React.SetStateAction<string>>;
@@ -69,6 +70,8 @@ export const PlayerContextProvider: React.FC<PlayerContextProviderProps> = ({
   const [isRosterImported, setIsRosterImported] = useState<boolean>(false);
   const [isEditPlayerModalIsOpen, setIsEditPlayerModalIsOpen] =
     useState<boolean>(false);
+    const [isEditPlayerDetailsModalOpen, setIsEditPlayerDetailsModalOpen] =
+    useState<boolean>(false);
   const [isDeletePlayerModalIsOpen, setIsDeletePlayerModalIsOpen] =
     useState<boolean>(false);
   const [search, setSearch] = useState<string>("");
@@ -80,16 +83,12 @@ export const PlayerContextProvider: React.FC<PlayerContextProviderProps> = ({
   const [isFile, setIsFile] = useState<File | null>(null);
   const [playerToEditOrDelete, setPlayerToEditOrDelete] = useState<string>("");
 
-  const addPlayer = (player: Player) => {
-    setPlayers((prevPlayers) => [...prevPlayers, player]);
-  };
+ 
 
-  const editPlayer = (index: number, updatedPlayer: Player) => {
-    setPlayers((prevPlayers) => {
-      const newPlayers = [...prevPlayers];
-      newPlayers[index] = updatedPlayer;
-      return newPlayers;
-    });
+  const editPlayer = (playerId: string, updatedPlayer: Player) => {
+    setPlayers((prevPlayers) =>
+      prevPlayers.map((player) => (player.Id === playerId ? { ...player, ...updatedPlayer } : player))
+    );
   };
 
   const deletePlayer = (playerId: string) => {
@@ -109,7 +108,6 @@ export const PlayerContextProvider: React.FC<PlayerContextProviderProps> = ({
         setIsDeletePlayerModalIsOpen,
         search,
         setSearch,
-        addPlayer,
         editPlayer,
         deletePlayer,
         teamName,
@@ -124,6 +122,8 @@ export const PlayerContextProvider: React.FC<PlayerContextProviderProps> = ({
         setIsFile,
         playerToEditOrDelete,
         setPlayerToEditOrDelete,
+        isEditPlayerDetailsModalOpen,
+        setIsEditPlayerDetailsModalOpen,
       }}
     >
       {children}

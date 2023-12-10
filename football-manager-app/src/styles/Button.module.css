@@ -15,15 +15,16 @@
 
 .buttonPrimaryStyles {
   padding: 12px 20px 11px 20px;
-  color: var(--text-headings);
+  color: var(--text-heading);
   font-family: "Poppins";
-  font-size: 10px;
+  font-size: 14px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
   background-color: var(--primary-orange);
   height: 44px;
   border-radius: 8px;
+  border-style: none;
 }
 
 .buttonWarningStyles {
