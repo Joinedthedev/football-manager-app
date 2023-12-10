@@ -1,30 +1,29 @@
-# React + TypeScript + Vite
+# Football Manager App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
 
-Currently, two official plugins are available:
+This is a web application for managing a Mock football roster. It allows users to import a roster from a CSV file, view a summary of the imported data, and manage player information.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## Expanding the ESLint configuration
+- Import a fantasy football roster from a CSV file.
+- View a summary of the imported roster, including total players, goalkeepers, midfielders, defenders, and forwards.
+  
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Technologies Used
 
-- Configure the top-level `parserOptions` property like this:
+- React.js: Front-end library for building user interfaces.
+- TypeScript: Adds static typing to JavaScript, enhancing code quality and developer experience.
+- CSS Modules: Localized styling for React components.
+- PapaParse: CSV parsing library for parsing roster data from CSV files.
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+## Getting Started
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+### Prerequisites
+
+- Node.js: Make sure Node.js is installed on your machine.
+
+## Usage
+Click on the "Import Roster" button to upload a CSV file containing your football roster.
+Explore the summary to gain insights into the roster's composition and positional distribution.
+
