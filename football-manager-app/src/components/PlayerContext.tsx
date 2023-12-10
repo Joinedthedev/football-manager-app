@@ -75,6 +75,12 @@ type PlayerContextType = {
 
   numberOfStarters: number | undefined;
   setNumberOfStarters: React.Dispatch<React.SetStateAction<number | undefined>>;
+
+  getContextStarters: (players: Player[]) => Player[];
+  getContextStarterDefenders: (players: Player[]) => Player[];
+  getContextStarterFowards: (players: Player[]) => Player[];
+  getContextStarterMidfielders: (players: Player[]) => Player[];
+  getContextStarterGoalkeepers: (players: Player[]) => Player[];
 };
 
 const PlayerContext = createContext<PlayerContextType | undefined>(undefined);
@@ -130,32 +136,39 @@ export const PlayerContextProvider: React.FC<PlayerContextProviderProps> = ({
     );
   };
 
-
   const getContextStarters = (players: Player[]): Player[] => {
     return players.filter((player) => player.starter === "Yes");
   };
 
- 
   const getContextStarterDefenders = (players: Player[]): Player[] => {
-    return players.filter((player) => player.position === "Defender" && player.starter ==="Yes");
+    return players.filter(
+      (player) => player.position === "Defender" && player.starter === "Yes"
+    );
   };
 
   const getContextStarterFowards = (players: Player[]): Player[] => {
-    return players.filter((player) => player.position === "Forward" && player.starter ==="Yes");
+    return players.filter(
+      (player) => player.position === "Forward" && player.starter === "Yes"
+    );
   };
 
   const getContextStarterMidfielders = (players: Player[]): Player[] => {
-    return players.filter((player) => player.position === "Midfielder" && player.starter ==="Yes");
+    return players.filter(
+      (player) => player.position === "Midfielder" && player.starter === "Yes"
+    );
   };
 
   const getContextStarterGoalkeepers = (players: Player[]): Player[] => {
-    return players.filter((player) => player.position === "Goalkeeper" && player.starter ==="Yes");
+    return players.filter(
+      (player) => player.position === "Goalkeeper" && player.starter === "Yes"
+    );
   };
 
-  
   useEffect(() => {
-    const totalContextGoalKeepers = getContextStarterGoalkeepers(players).length;
-    const totalContextMidfielders = getContextStarterMidfielders(players).length;
+    const totalContextGoalKeepers =
+      getContextStarterGoalkeepers(players).length;
+    const totalContextMidfielders =
+      getContextStarterMidfielders(players).length;
     const totalContextDefenders = getContextStarterDefenders(players).length;
     const totalContextFowards = getContextStarterFowards(players).length;
     const totalContextStarters = getContextStarters(players).length;
@@ -165,10 +178,9 @@ export const PlayerContextProvider: React.FC<PlayerContextProviderProps> = ({
     setNumberOfStarters(totalContextStarters);
     setNumberOfFowards(totalContextFowards);
 
-    console.log(totalContextDefenders)
+    console.log(totalContextDefenders);
   }, [players]);
 
- 
   return (
     <PlayerContext.Provider
       value={{
@@ -208,6 +220,11 @@ export const PlayerContextProvider: React.FC<PlayerContextProviderProps> = ({
         setNumberOfFowards,
         numberOfStarters,
         setNumberOfStarters,
+        getContextStarters,
+        getContextStarterDefenders,
+        getContextStarterFowards,
+        getContextStarterMidfielders,
+        getContextStarterGoalkeepers,
       }}
     >
       {children}

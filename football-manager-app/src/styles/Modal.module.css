@@ -201,7 +201,7 @@
 .formationOverviewModalStyles {
   background-color: var(--neutral-background-2);
   width: 379px;
-  height: 127px;
+  height: 80px;
   border-radius: 8px;
 
   box-shadow: 0px 12px 28px 0px rgba(22, 22, 22, 0.5);

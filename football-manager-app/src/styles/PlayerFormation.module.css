@@ -1,0 +1,134 @@
+.playerCircle {
+  width: 22px;
+  height: 22px;
+  background-color: var(--neutral-background-2);
+  border: solid 2px;
+  border-color: var(--text-normal);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--text-heading);
+  font: 16px;
+}
+
+#goal {
+  position: absolute;
+  bottom: 36%;
+  left: 10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#defender-1 {
+  position: absolute;
+  bottom: 64%;
+  left: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#defender-2 {
+  position: absolute;
+  bottom: 45%;
+  left: 17.5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#defender-3 {
+  position: absolute;
+  bottom: 25%;
+  left: 19%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#defender-4 {
+  position: absolute;
+  bottom: 10%;
+  left: 20.75%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#midfielder-1 {
+  position: absolute;
+  bottom: 60%;
+  left: 34%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#midfielder-2 {
+  position: absolute;
+  bottom: 37%;
+  left: 33.25%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#midfielder-3 {
+  position: absolute;
+  bottom: 15%;
+  left: 34%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#forward-1 {
+  position: absolute;
+  bottom: 55%;
+  right: 45%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#forward-2 {
+  position: absolute;
+  bottom: 35%;
+  right: 45%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#forward-3 {
+  position: absolute;
+  bottom: 17%;
+  right: 45%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.playerCircleName {
+  color: var(--text-heading);
+  text-align: center;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+  font-family: Poppins;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
