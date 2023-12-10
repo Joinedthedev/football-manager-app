@@ -2,7 +2,7 @@ import ModalHeader from "./ModalHeader";
 
 import styles from "@/styles/Modal.module.css";
 import ReactDom from "react-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { usePlayerContext } from "./PlayerContext";
 import PrimaryButton from "./PrimaryButton";
 
@@ -104,6 +104,27 @@ const EditPlayerDetailsModal = ({
     saves: playerToEdit?.saves || 0,
     Id: playerToEdit?.Id || "",
   });
+  useEffect(() => {
+    // Set initial values when the component mounts
+    setUpdatedPlayer({
+      name: playerToEdit?.name || '',
+      image: playerToEdit?.image || '',
+      jerseyNumber: playerToEdit?.jerseyNumber || 0,
+      position: playerToEdit?.position || '',
+      height: playerToEdit?.height || 0,
+      weight: playerToEdit?.weight || 0,
+      nationality: playerToEdit?.nationality || '',
+      flagImage: playerToEdit?.flagImage || '',
+      starter: playerToEdit?.starter || '',
+      appearances: playerToEdit?.appearances || 0,
+      minutesPlayed: playerToEdit?.minutesPlayed || 0,
+      goals: playerToEdit?.goals || 0,
+      assists: playerToEdit?.assists || 0,
+      cleanSheets: playerToEdit?.cleanSheets || 0,
+      saves: playerToEdit?.saves || 0,
+      Id: playerToEdit?.Id || '',
+    });
+  }, [playerToEdit]);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -115,7 +136,7 @@ const EditPlayerDetailsModal = ({
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     onClose();
-    setIsEditPlayerModalIsOpen(false)
+    setIsEditPlayerModalIsOpen
 
 
     const updatedFlagImage = getFlagImage(updatedPlayer.nationality);

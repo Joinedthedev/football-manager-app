@@ -147,8 +147,7 @@ const ImportTeamModal = ({ open, onClose }: ImportTeamModalProps) => {
     return players.filter((player) => player.position === "Fowards");
   };
 
-  console.log(players);
-  console.log(getMidfielders);
+
   const totalPlayers = getTotalPlayers(players);
   const totalGoalKeepers = getGoalkeepers(players).length;
   const totalMidfielders = getMidfielders(players).length;
