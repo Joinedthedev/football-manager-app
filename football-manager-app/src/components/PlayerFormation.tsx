@@ -1,6 +1,7 @@
 import styles from "@/styles/PlayerFormation.module.css";
 import { usePlayerContext } from "./PlayerContext";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import PlayerCard from "./PlayerCard";
 
 const PlayerFormation = () => {
   const {
@@ -16,11 +17,16 @@ const PlayerFormation = () => {
   const goalkeepers = getContextStarterGoalkeepers(players);
   const midfielders = getContextStarterMidfielders(players);
 
-  const [selectedPlayer, setSelectedPlayer] = useState<string | null>(null);
+  const [selectedPlayer, setSelectedPlayer] = useState<string | null>(goalkeepers[0].Id);
+  const { setSelectedPlayerContext} = usePlayerContext();
 
-  const handlePlayerClick = (playerId: string) => {
-    setSelectedPlayer(playerId);
-  };
+ setSelectedPlayerContext(selectedPlayer)
+    const handlePlayerClick = (playerId: string) => {
+      setSelectedPlayer(playerId);
+
+  
+    }
+
 
   return (
     <div className={styles.playerFormationContainer}>
@@ -182,6 +188,7 @@ const PlayerFormation = () => {
           </>
         )}
       </div>
+
     </div>
   );
 };

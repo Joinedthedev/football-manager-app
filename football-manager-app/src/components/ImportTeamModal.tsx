@@ -81,7 +81,7 @@ const ImportTeamModal = ({ open, onClose }: ImportTeamModalProps) => {
       header: true,
       dynamicTyping: true,
       complete: function (result) {
-        console.log(result.errors); // Log parsing errors
+        console.log(result.errors); 
         const parsedData: Player[] = result.data.map((csvPlayer:any) => ({
           
           name: csvPlayer["Player Name"],

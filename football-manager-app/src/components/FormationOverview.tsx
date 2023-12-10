@@ -1,11 +1,13 @@
 import EditTeamName from "./EditTeamName";
 import styles from "@/styles/FormationOverview.module.css";
 import Field from "@/assets/Field.png";
+import PlayerCardEmpty from "./PlayerCardEmpty";
 import PlayerCard from "./PlayerCard";
 import { usePlayerContext } from "./PlayerContext";
 import FormationOverviewModal from "./FormationOverviewModal";
 import { useState, useEffect } from "react";
 import PlayerFormation from "./PlayerFormation";
+
 const FormationOverview = () => {
   const {
     isFile,
@@ -14,6 +16,7 @@ const FormationOverview = () => {
     numberOfMidfielders,
     numberOfDefenders,
     numberOfFowards,
+    selectedPlayerContext
   } = usePlayerContext();
 
   const [tooManyStarters, setTooManyStarters] = useState<boolean>(false);
@@ -21,10 +24,10 @@ const FormationOverview = () => {
 
   useEffect(() => {
     if (
-      (numberOfDefenders!)> 4 ||
-    (  numberOfGoalkeepers!) > 1 ||
-      (numberOfMidfielders!) > 3 ||
-      (numberOfFowards!) > 3
+      numberOfDefenders! > 4 ||
+      numberOfGoalkeepers! > 1 ||
+      numberOfMidfielders! > 3 ||
+      numberOfFowards! > 3
     ) {
       setTooManyStarters(true);
     } else {
@@ -32,27 +35,25 @@ const FormationOverview = () => {
     }
 
     if (
-      (numberOfDefenders!) < 4 ||
-      (numberOfGoalkeepers!) < 1 ||
-      (numberOfMidfielders!) < 3 ||
-     ( numberOfFowards!) < 3
+      numberOfDefenders! < 4 ||
+      numberOfGoalkeepers! < 1 ||
+      numberOfMidfielders! < 3 ||
+      numberOfFowards! < 3
     ) {
       setNotEnoughStarters(true);
     } else {
       setNotEnoughStarters(false);
     }
 
-    if (numberOfDefenders==4 && numberOfGoalkeepers===1 && numberOfMidfielders===3 && numberOfFowards===3){
-      setNotEnoughStarters(false)
-      setTooManyStarters(false)
+    if (
+      numberOfDefenders == 4 &&
+      numberOfGoalkeepers === 1 &&
+      numberOfMidfielders === 3 &&
+      numberOfFowards === 3
+    ) {
+      setNotEnoughStarters(false);
+      setTooManyStarters(false);
     }
-  
-    console.log("numberOfDefenders:", numberOfDefenders);
-    console.log("numberofgoalkeepers:", numberOfGoalkeepers);
-    console.log("numberOfmids", numberOfMidfielders);
-    console.log("numberOfFowards, ", numberOfFowards)
-  console.log("tooManyStarters:", tooManyStarters);
-  console.log("notEnoughStarters:", notEnoughStarters);
   }, [
     numberOfDefenders,
     numberOfGoalkeepers,
@@ -70,7 +71,7 @@ const FormationOverview = () => {
         <div className={styles.formationFieldImgContainer}>
           <img className={styles.formationFieldImg} src={Field} alt="" />
         </div>
-        <PlayerCard />
+        {!selectedPlayerContext || notEnoughStarters|| tooManyStarters ?<PlayerCardEmpty/>: <PlayerCard playerId={selectedPlayerContext!}/>}
         {!isFile ? (
           <FormationOverviewModal
             title="No player data found"
@@ -87,7 +88,6 @@ const FormationOverview = () => {
             text="Your team doesn’t have enough starters for one or more of the positions in the 4-3-3 formation"
           />
         ) : (
-          
           <PlayerFormation />
         )}
       </div>

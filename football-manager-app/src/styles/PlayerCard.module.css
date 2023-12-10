@@ -1,0 +1,85 @@
+.playerNamePositionContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.playerCardContainer {
+  display: flex;
+  width: 322px;
+  height: 420px;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  flex-shrink: 0;
+  background-color: var(--neutral-background-1);
+}
+
+.playerCardName {
+  color: #fff;
+
+  text-align: center;
+
+  font-family: Poppins;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  text-align: left;
+}
+
+.playerCardPosition {
+  color: var(--primary-orange);
+  text-align: left;
+
+  font-family: Poppins;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.playerColumn {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.playerSubtitles {
+  color: var(--text-normal);
+  font-family: Poppins;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.playerGrandTitle {
+  color: var(--primary-orange);
+  font-family: Poppins;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.playerSubtitlesBold {
+  color: var(--text-heading);
+
+  font-family: Poppins;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.playerImage {
+    position: absolute;
+    bottom:20%;
+    right: 5%;
+  width:300px;
+  height: 400px;
+  flex-shrink: 0;
+  object-fit: contain;
+
+}

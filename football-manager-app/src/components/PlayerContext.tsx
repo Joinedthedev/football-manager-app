@@ -76,6 +76,9 @@ type PlayerContextType = {
   numberOfStarters: number | undefined;
   setNumberOfStarters: React.Dispatch<React.SetStateAction<number | undefined>>;
 
+  selectedPlayerContext: string | null;
+  setSelectedPlayerContext: React.Dispatch<React.SetStateAction<string | null>>;
+
   getContextStarters: (players: Player[]) => Player[];
   getContextStarterDefenders: (players: Player[]) => Player[];
   getContextStarterFowards: (players: Player[]) => Player[];
@@ -121,6 +124,10 @@ export const PlayerContextProvider: React.FC<PlayerContextProviderProps> = ({
   const [numberOfStarters, setNumberOfStarters] = useState<
     number | undefined
   >();
+
+  const [selectedPlayerContext, setSelectedPlayerContext] = useState<
+    string | null
+  >(null);
 
   const editPlayer = (playerId: string, updatedPlayer: Player) => {
     setPlayers((prevPlayers) =>
@@ -225,6 +232,8 @@ export const PlayerContextProvider: React.FC<PlayerContextProviderProps> = ({
         getContextStarterFowards,
         getContextStarterMidfielders,
         getContextStarterGoalkeepers,
+        selectedPlayerContext,
+        setSelectedPlayerContext,
       }}
     >
       {children}
