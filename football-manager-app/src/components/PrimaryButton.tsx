@@ -6,6 +6,7 @@ type PrimaryButtonProps = {
   onClick: ()=>void
   
   
+  
 };
 
 const PrimaryButton = ({ text, onClick,}: PrimaryButtonProps) => {

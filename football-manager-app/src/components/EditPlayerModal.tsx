@@ -47,22 +47,26 @@ const EditPlayerModal = ({ open, onClose }: EditPlayerModalProps) => {
               }}
             >
               <div className={styles.editPlayerModalContainer}>
-                <span
+                <span style={{ marginRight: "5px"}}>
+                  <PenIcon />
+                </span>{" "}
+                <p
                   onClick={handleEditClick}
                   style={{ marginRight: "5px", cursor: "pointer" }}
                 >
-                  <PenIcon />
-                </span>{" "}
-                <p>Edit Player</p>
+                  Edit Player
+                </p>
               </div>
               <div className={styles.editPlayerModalContainer}>
-                <span
-                  onClick={handleDeleteClick}
-                  style={{ cursor: "pointer", marginRight: "10px" }}
-                >
+                <span style={{ marginRight: "5px"}}>
                   <TrashIcon />
                 </span>
-                <p>Delete Player</p>
+                <p
+                  onClick={handleDeleteClick}
+                  style={{ marginRight: "5px", cursor: "pointer" }}
+                >
+                  Delete Player
+                </p>
               </div>
             </div>
           </div>

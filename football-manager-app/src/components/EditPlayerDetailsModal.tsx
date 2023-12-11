@@ -5,6 +5,7 @@ import ReactDom from "react-dom";
 import { useState, useEffect } from "react";
 import { usePlayerContext } from "./PlayerContext";
 import PrimaryButton from "./PrimaryButton";
+import SecondaryButton from "./SecondaryButton";
 
 type EditPlayerDetailsModalProps = {
   open: boolean;
@@ -18,6 +19,8 @@ const EditPlayerDetailsModal = ({
 }: EditPlayerDetailsModalProps) => {
   const { editPlayer, players } = usePlayerContext();
   const { playerToEditOrDelete,  setIsEditPlayerModalIsOpen } = usePlayerContext();
+
+  const [hasChanges, setHasChanges] = useState<boolean>(false);
 
   const nationalities: string[] = [
     "Costa Rican",
@@ -131,7 +134,13 @@ const EditPlayerDetailsModal = ({
   ) => {
     const { name, value } = e.target;
     setUpdatedPlayer((prev) => ({ ...prev, [name]: value }));
+
+    setHasChanges(true)
   };
+
+  const logNothing = ()=>{
+    console.log("nothing")
+  }
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -162,6 +171,7 @@ const EditPlayerDetailsModal = ({
       Id: playerToEdit?.Id || "",
     };
     editPlayer(playerToEditOrDelete, updatedPlayerWithUnchangedProperties);
+    setHasChanges(false)
   };
 
   return ReactDom.createPortal(
@@ -310,8 +320,9 @@ const EditPlayerDetailsModal = ({
                   </label>
                 </div>
                 <span style={{ display: "flex", alignSelf: "flex-end" }}>
-                  <PrimaryButton onClick={()=>handleSubmit} text="Edit Player" />
-                  
+                  {hasChanges ? <PrimaryButton onClick={()=>handleSubmit} text="Edit Player" /> :  <button disabled className={styles.modalImportRosterButtonInactive}>
+                  Edit Player
+                </button>}
                 </span>
               </div>
             </form>

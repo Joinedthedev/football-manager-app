@@ -2,7 +2,6 @@ import React from "react";
 import styles from "@/styles/RosterSection.module.css";
 import PenIcon from "../assets/component-assets/PenIcon";
 import { usePlayerContext } from "./PlayerContext";
-import TopRosterText from "./TopRosterText";
 
 const EditTeamName = () => {
   const {teamName, setTeamName} = usePlayerContext();

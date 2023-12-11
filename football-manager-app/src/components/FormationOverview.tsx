@@ -11,7 +11,7 @@ import TopRosterText from "./TopRosterText";
 
 const FormationOverview = () => {
   const {
-    isFile,
+    
 
     numberOfGoalkeepers,
     numberOfMidfielders,
