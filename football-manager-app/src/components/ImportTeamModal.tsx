@@ -125,6 +125,7 @@ const ImportTeamModal = ({ open, onClose }: ImportTeamModalProps) => {
   const handleImport = () => {
     setIsRosterImported(true);
     onClose();
+    setIsFile(null)
   };
 
   const getTotalPlayers = (players: Player[]): number => {
@@ -154,10 +155,7 @@ const ImportTeamModal = ({ open, onClose }: ImportTeamModalProps) => {
   const totalDefenders = getDefenders(players).length;
   const totalFowards = getFowards(players).length;
 
-  {
-    console.log("isFile:", isFile);
-  }
-  console.log("isError:", isError);
+  
   return ReactDom.createPortal(
     <>
       {open && (

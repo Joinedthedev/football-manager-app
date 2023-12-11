@@ -62,7 +62,7 @@ const PlayerDetails = ({ player }: PlayerDetailsProps) => {
         <div style={{ width: "150px" }}>{player.weight}kg</div>
         <div>{player.nationality}</div>
 
-        <div style={{ textAlign: "center" }}>{player.appearances}</div>
+        <div style={{ textAlign: "center", width:"100px" }}>{player.appearances}</div>
 
         <div style={{ textAlign: "center" }}>{player.minutesPlayed} </div>
 

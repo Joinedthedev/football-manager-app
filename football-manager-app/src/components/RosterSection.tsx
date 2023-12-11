@@ -6,12 +6,13 @@ import { useState } from "react";
 import PlayerRoster from "./PlayerRoster";
 import { usePlayerContext } from "./PlayerContext";
 import EditPlayerModal from "./EditPlayerModal";
+import TopRosterText from "./TopRosterText";
 
 
 /** The roster component for this app. ALL STYLES CAN BE FOUND IN src/styles/RosterSection.module.css */
 const RosterSection = () => {
   const { players } = usePlayerContext();
-  const { isRosterImported, } = usePlayerContext();
+  const { isRosterImported, setIsFile} = usePlayerContext();
   const { isEditPlayerModalIsOpen, setIsEditPlayerModalIsOpen } =
     usePlayerContext();
 
@@ -25,8 +26,7 @@ const RosterSection = () => {
 
   const handleOpenImportTeamModal = () => {
     setImportTeamModalIsOpen(true);
-    
-    
+    setIsFile(null)
   };
 
   const handleCloseImportTeamModal = () => {
@@ -59,7 +59,10 @@ const RosterSection = () => {
   return (
     <div className={styles.rosterContainer}>
       <div className={styles.rosterTop}>
-        <EditTeamName />
+      <div>
+        <TopRosterText text="Roster Details"/>
+          <EditTeamName />
+      </div>
         <div className={styles.rosterTopRight}>
           {/* <form onSubmit={handleSubmit}> */}
             <input

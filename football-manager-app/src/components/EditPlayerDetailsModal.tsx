@@ -136,7 +136,7 @@ const EditPlayerDetailsModal = ({
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     onClose();
-    setIsEditPlayerModalIsOpen
+    setIsEditPlayerModalIsOpen(false)
 
 
     const updatedFlagImage = getFlagImage(updatedPlayer.nationality);

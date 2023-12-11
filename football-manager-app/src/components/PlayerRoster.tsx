@@ -4,7 +4,7 @@ import PlayerDetails from "./PlayerDetails";
 const PlayerRoster = () => {
   const { players } = usePlayerContext();
   const { search } = usePlayerContext();
- const {deletePlayer} = usePlayerContext();
+ 
   
 
   return (

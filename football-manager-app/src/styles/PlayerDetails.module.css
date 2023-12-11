@@ -40,4 +40,11 @@
     text-align: left;
   }
 
+  .smallerWidth{
+    width: 70px;
+  }
+
+  .biggerWidth{
+    width: 150px;
+  }
 

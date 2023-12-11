@@ -73,6 +73,9 @@ type PlayerContextType = {
     React.SetStateAction<number | undefined>
   >;
 
+  isFileImported: boolean;
+  setIsFileImported: React.Dispatch<React.SetStateAction<boolean>>;
+
   numberOfStarters: number | undefined;
   setNumberOfStarters: React.Dispatch<React.SetStateAction<number | undefined>>;
 
@@ -129,6 +132,7 @@ export const PlayerContextProvider: React.FC<PlayerContextProviderProps> = ({
     string | null
   >(null);
 
+  const [isFileImported, setIsFileImported] = useState<boolean>(false);
   const editPlayer = (playerId: string, updatedPlayer: Player) => {
     setPlayers((prevPlayers) =>
       prevPlayers.map((player) =>
@@ -191,6 +195,8 @@ export const PlayerContextProvider: React.FC<PlayerContextProviderProps> = ({
   return (
     <PlayerContext.Provider
       value={{
+        isFileImported,
+        setIsFileImported,
         players,
         setPlayers,
         isRosterImported,

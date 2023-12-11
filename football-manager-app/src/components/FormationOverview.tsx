@@ -7,6 +7,7 @@ import { usePlayerContext } from "./PlayerContext";
 import FormationOverviewModal from "./FormationOverviewModal";
 import { useState, useEffect } from "react";
 import PlayerFormation from "./PlayerFormation";
+import TopRosterText from "./TopRosterText";
 
 const FormationOverview = () => {
   const {
@@ -16,7 +17,8 @@ const FormationOverview = () => {
     numberOfMidfielders,
     numberOfDefenders,
     numberOfFowards,
-    selectedPlayerContext
+    selectedPlayerContext,
+    players
   } = usePlayerContext();
 
   const [tooManyStarters, setTooManyStarters] = useState<boolean>(false);
@@ -64,15 +66,22 @@ const FormationOverview = () => {
   return (
     <div className={styles.formationContainer}>
       <div className={styles.formationTop}>
-        <EditTeamName />
+        <div>
+          <TopRosterText text="Formation Overview" />
+          <EditTeamName />
+        </div>
       </div>
       <div className={styles.formationFieldContainer}>
         {" "}
         <div className={styles.formationFieldImgContainer}>
           <img className={styles.formationFieldImg} src={Field} alt="" />
         </div>
-        {!selectedPlayerContext || notEnoughStarters|| tooManyStarters ?<PlayerCardEmpty/>: <PlayerCard playerId={selectedPlayerContext!}/>}
-        {!isFile ? (
+        {!selectedPlayerContext || notEnoughStarters || tooManyStarters ? (
+          <PlayerCardEmpty />
+        ) : (
+          <PlayerCard playerId={selectedPlayerContext!} />
+        )}
+        {players.length<1 ? (
           <FormationOverviewModal
             title="No player data found"
             text="Please import your roster first."

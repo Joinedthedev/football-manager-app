@@ -1,7 +1,7 @@
 import styles from "@/styles/PlayerFormation.module.css";
 import { usePlayerContext } from "./PlayerContext";
-import { useState, useEffect } from "react";
-import PlayerCard from "./PlayerCard";
+import { useState } from "react";
+
 
 const PlayerFormation = () => {
   const {

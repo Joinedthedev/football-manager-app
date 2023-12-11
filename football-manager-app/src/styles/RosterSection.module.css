@@ -40,7 +40,7 @@
 .rosterInput {
   border-radius: 8px;
   background-color: #222;
-  height: 14px;
+  
   padding: 10px;
   padding-left: 30px;
 
@@ -48,7 +48,7 @@
   background-image: url("/src/assets/svgs/MagGlassIcon.svg");
   background-repeat: no-repeat;
   background-position: 5% 50%;
-  width: 100%;
+
   text-align: left center;
   color: white;
   font-size: 14px;
@@ -56,32 +56,32 @@
 }
 
 .rosterButton {
-  background-color: var(--primary-orange);
-  border-radius: 8px;
-  height: 100px;
-  font-family: "Poppins";
-  border-style: none;
-  height: 35px;
-  padding: 10px;
-  text-align: center;
-  width: 60%;
+  padding: 12px 20px 11px 20px;
   color: var(--text-heading);
-  font-size: 11px;
+  font-family: "Poppins";
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  background-color: var(--primary-orange);
+  height: 42px;
+  border-radius: 8px;
+  border-style: none;
 }
 
 .rosterButtonReImport {
-  background-color: var(--neutral-background-1);
+  height: 42px;
+  border: 1px solid;
+  border-color: var(--borders-default);
   border-radius: 8px;
-  height: 100px;
-  font-family: "Poppins";
-  border-style: none;
-  height: 35px;
-  padding: 10px;
-  text-align: center;
-  width: 60%;
+  background-color: var(--neutral-background-2);
   color: var(--text-normal);
-  font-size: 11px;
-  border: 1px solid var(--borders-default)
+  font-family: "Poppins";
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  padding: 12px 20px 11px 20px;
 }
 
 .rosterPlayerContainer {
@@ -89,7 +89,7 @@
   justify-content: center;
   align-items: center;
 
-  height: 71vh;
+  height: 400px;
   background-color: var(--neutral-background-2);
   border-radius: 8px;
   margin-left: 10px;
